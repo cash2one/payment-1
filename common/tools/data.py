@@ -3,7 +3,7 @@
 
 import sys, os, hashlib, re, json, logging, logging.config, io, random, time, datetime
 
-from bson import ObjectId
+from bson.objectid import ObjectId
 
 import setting
 
