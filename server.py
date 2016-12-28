@@ -9,7 +9,6 @@ import tornado.web
 
 from web.route import route
 from web import views_v1
-from common import alipay, tenpay, unionpay, wechat
 from setting import SERVER_PORT, SERVER_ROOT, BASE_HOST, IS_DEBUG, IS_ZIP, IS_COOKIE_XSRF, COOKIE_SECRET
 from common.tools.data import init_log
 

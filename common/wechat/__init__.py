@@ -5,8 +5,7 @@
    微信开发模块
 '''
 
-from enterprise import *
-from wxpay import *
+
 
 __author__ = 'raymondlei'
 
