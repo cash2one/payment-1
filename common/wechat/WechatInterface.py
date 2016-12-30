@@ -37,15 +37,15 @@ class WechatInterface:
         list_str = [self.__TOKEN, timestamp, nonce]
 
         #1.将token、timestamp、nonce三个参数进行字典序排序
-        sorted(list_str)
-        print list_str
+        list_str.sort()
 
         #2. 将三个参数字符串拼接成一个字符串进行sha1加密
         tmp_str = self.wechat_sha1(list_str)
-        logging.debug('sha1=' + sha1 + '&signature=' + signature)
+        logging.debug('sha1=' + tmp_str + '&signatureure=' + signature)
 
         # 3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
-        return True if tmp_str != None and tmp_str == signature else False
+        result = True if tmp_str != None and tmp_str == signature else False
+        return result
 
     def wechat_sha1(self, list_str):
         sha1_str = list_str[0] + list_str[1] + list_str[2]

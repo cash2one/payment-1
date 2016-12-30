@@ -5,7 +5,7 @@ import logging
 from web.route import route
 from web.base import BaseRequestHandler
 from common.wechat.WechatInterface import wechat_func
-import wechatpy
+# import wechatpy
 
 
 
@@ -13,8 +13,10 @@ __author__ = 'raymondlei'
 
 
 @route('/wxsignature')
-class WechatCheckSignatureHandler(BaseRequestHandler):
-
+class WXCheckSignatureHandler(BaseRequestHandler):
+    """
+    微信签名
+    """
     def do_get(self):
 
         """
@@ -25,22 +27,21 @@ class WechatCheckSignatureHandler(BaseRequestHandler):
         try:
 
             # 微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
-            signature = self.get_body_argument('signature', None)
+            signature = self.get_argument('signature', None)
 
             # 时间戳
-            timestamp = self.get_body_argument.get('timestamp', None)
+            timestamp = self.get_argument('timestamp', None)
 
             # 随机数
-            nonce = self.get_body_argument.get('nonce', None)
+            nonce = self.get_argument('nonce', None)
 
             # 随机字符串
-            echostr = self.get_body_argument.get('echostr', None)
+            echostr = self.get_argument('echostr', None)
 
             result = wechat_func.checkSignature(signature, timestamp, nonce)
 
             if result:
 
-                logging.debug('微信sign校验,返回echostr='+echostr)
                 self.write(echostr)
 
             else:
