@@ -42,7 +42,7 @@ ALIPAY_ACCOUNT = ''
 
 ALIPAY_STATUS_SUCCESS = 0                   #成功
 ALIPAY_STATUS_PAYED = 1                     #订单已支付
-ALIPAY_STAUTS_ORDER_NOT_EXTED = 2           #　订单不存在
+ALIPAY_STAUTS_ORDER_NOT_EXTED = 2           #订单不存在
 ALIPAY_STATUS_ORDER_REFUND = 3              #订单已退款
 ALIPAY_STATUS_ORDER_STATUS_ERROR = 4        #订单状态错误
 

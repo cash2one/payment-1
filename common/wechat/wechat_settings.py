@@ -10,12 +10,21 @@ __author__ = 'raymondlei'
 
 # 公众号资料
 
-APP_ID = 'wx73d63023f7ae2fc3'
-APP_SECRET = '5fe62a404cef6a5a69aaa300bda3152c'
+APP_ID = 'wxbe5e43d6683e1c39'
+APP_SECRET = 'e56009336644af1ea3f6a477c4551cc7'
 
+#
 BASE_ID = 'gh_e558308e3180'
 
+# 商户ID
 WECHAT_PAY_BUSSINESS_ID = '1330855301'
 
+# token
+WECHAT_TOKEN = 'dconline_payment'
+
+# 消息加密密钥由43位字符组成，可随机修改
+WECHAT_ENCODINGAESKEY ='JB68D60dSIaxLUdw0icFzsX1pjVoDqzgzgYNB3NjW7U'
 
 
+
+URL = 'http://mamockup.sozi.it/base/v1/checkSignature'
