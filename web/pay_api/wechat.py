@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+import logging
 from web.route import route
 from web.base import BaseRequestHandler
 from common.wechat.WechatInterface import wechat_func
@@ -21,6 +23,7 @@ class WechatCheckSignatureHandler(BaseRequestHandler):
         """
 
         try:
+
             # 微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。
             signature = self.get_body_argument('signature', None)
 
@@ -34,11 +37,16 @@ class WechatCheckSignatureHandler(BaseRequestHandler):
             echostr = self.get_body_argument.get('echostr', None)
 
             result = wechat_func.checkSignature(signature, timestamp, nonce)
+
             if result:
-                self.write_success('微信sign校验,返回echostr='+echostr)
+
+                logging.debug('微信sign校验,返回echostr='+echostr)
+                self.write(echostr)
 
             else:
+
                 self.write_warning('微信sign校验,---校验失败')
+
         except Exception as e:
             self.write_warning('微信sign校验,---Exception' + str(e))
 

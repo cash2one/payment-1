@@ -3,6 +3,7 @@
 
 import logging
 from hashlib import sha1, md5
+
 # import wechatpy
 # from wechatpy.utils import check_signature
 # from wechatpy.exceptions import InvalidSignatureException
