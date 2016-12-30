@@ -314,6 +314,9 @@ def gen_chcekout_jpeg():
 
 
 
+
+
+
 if __name__ == "__main__":
 
     #print timestamp_from_today()[0], timestamp_from_today()[1]
