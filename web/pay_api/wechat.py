@@ -8,8 +8,9 @@ import wechatpy
 __author__ = 'raymondlei'
 
 
-@route('/checkSignature')
+@route('/signature')
 class WechatCheckSignatureHandler(BaseRequestHandler):
 
-    def do_post(self, *args, **kwargs):
-        pass
+    def do_get(self):
+        print 'signature'
+        self.write('check check signature')
