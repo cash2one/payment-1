@@ -71,6 +71,10 @@ class WXCheckSignatureHandler(BaseRequestHandler):
 
             # 随机字符串
             echostr = self.get_argument('echostr', None)
-            check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
+            result = check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
+            if result:
+                self.write(echostr)
+            else:
+                self.write_warning('微信sign校验,---校验失败')
         except InvalidSignatureException as e:
             self.write_warning('微信sign校验,---Exception' + str(e))
