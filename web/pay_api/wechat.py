@@ -73,7 +73,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
             echostr = self.get_argument('echostr', None)
 
             result = check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
-            type(result)
+            print type(result), result
             if result:
                 self.write(echostr)
             else:
