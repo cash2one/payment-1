@@ -12,7 +12,7 @@ __author__ = 'raymondlei'
 
 APP_ID = 'wxbe5e43d6683e1c39'
 
-APP_SECRET = 'e56009336644af1ea3f6a477c4551cc7'
+APP_SECRET = 'a0ed2002d53a1ec6255dd5c88bddeaa7'
 
 BASE_URL = 'https://api.weixin.qq.com/cgi-bin/'
 
@@ -26,8 +26,7 @@ WECHAT_PAY_BUSSINESS_ID = '1330855301'
 WECHAT_TOKEN = 'wxpayment'
 
 # 消息加密密钥由43位字符组成，可随机修改
-WECHAT_ENCODINGAESKEY ='JB68D60dSIaxLUdw0icFzsX1pjVoDqzgzgYNB3NjW7U'
+WECHAT_ENCODINGAESKEY ='nMs4kjFAk349sT4O9VfhoAm9clzRySBEJGKuCnEi1tQ'
 
 
 
-URL = 'http://pay.sozi.it/base/v1/wxsignature'
