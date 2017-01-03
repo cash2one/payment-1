@@ -3,12 +3,12 @@
 
 from web.route import route
 from web.base import BaseRequestHandler
-from common.wechat.wechat_interface import wechat_func
+from common.wechat import wx_menu, wx_msg
 
 __author__ = 'raymondlei'
 
 
-@route('/demo/wxsignature')
+# @route('/wxsignature')
 class WXCheckSignatureHandler(BaseRequestHandler):
     """
     微信签名
@@ -35,7 +35,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
             # 随机字符串
             echostr = self.get_argument('echostr', None)
 
-            result = wechat_func.checkSignature(signature, timestamp, nonce)
+            result = wx_menu.wx_menu.check_signature(signature, timestamp, nonce)
 
             if result:
 
@@ -46,4 +46,25 @@ class WXCheckSignatureHandler(BaseRequestHandler):
                 self.write_warning('微信sign校验,---校验失败')
 
         except Exception as e:
+
             self.write_warning('微信sign校验,---Exception' + str(e))
+
+@route('wxauthorize')
+class WXAuthorizeHandler(BaseRequestHandler):
+
+    """
+        接收关注/取关事件推送
+    """
+
+    def do_post(self):
+
+        try:
+
+            body = self.request.body
+            wx_msg.wx_msg.author(body)
+
+        except Exception as e:
+
+            self.write_warning('微信取关事件推送，---推送失败' + str(e))
+
+

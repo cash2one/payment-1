@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 
-from setting import REDIS_BASE_HOST, REDIS_PORT, REDIS_DB_PASSWORD, REDIS_DB_ONE, REDIS_DB_TWO, REDIS_DB_ZERO, \
+from setting import REDIS_BASE_HOST, REDIS_PORT, REDIS_DB_PASSWORD, REDIS_DB_ONE, REDIS_DB_TWO, REDIS_DB_WX_TOKEN, \
     REDIS_DB_THRESS, REDIS_DB_FOUR, REDIS_DB_FIVES
 import redis
 
 
 """
-Redis工具类
+Redis数据库工具
 """
 
 __author__ = 'swzs'
@@ -16,24 +16,42 @@ __author__ = 'swzs'
 
 class RedisUtilsHandler:
 
+    """
+    Redis缓存工具类
+    """
+
     def __init__(self):
-        self._open_rate_cache = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_ZERO, password=REDIS_DB_PASSWORD)
+        self._wx_token_cache = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_WX_TOKEN, password=REDIS_DB_PASSWORD)
         self._account_order_cache = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_ONE, password=REDIS_DB_PASSWORD)
         self._account_online_cache = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_TWO, password=REDIS_DB_PASSWORD)
         self._phone_code_cache = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_THRESS, password=REDIS_DB_PASSWORD)
         self._email_activation = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_FOUR, password=REDIS_DB_PASSWORD)
+
         #图片验证码缓存
         self._png_checkout = redis.StrictRedis(host=REDIS_BASE_HOST, port=REDIS_PORT, db=REDIS_DB_FIVES, password=REDIS_DB_PASSWORD)
 
 
 
     def exists(self, key):
+
         """
         检查key是否存在
         :param key:
         :return:
         """
+
         return self._phone_code_cache.exists(key)
+
+    @property
+    def wx_token(self):
+
+        """
+        微信TOKEN缓存 redis控制句柄
+        :return:
+        """
+
+        return self._wx_token_cache
+
 
     @property
     def redis_phone_code(self):

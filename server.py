@@ -11,6 +11,7 @@ from web.route import route
 from web import views_v1, pay_api
 from setting import SERVER_PORT, SERVER_ROOT, BASE_HOST, IS_DEBUG, IS_ZIP, IS_COOKIE_XSRF, COOKIE_SECRET
 from common.tools.data import init_log
+from common.wechat.wx_token import wx_shedule
 
 __author__ = 'swzs'
 
@@ -24,6 +25,8 @@ settings = {
 }
 
 if __name__ == "__main__":
+
+    #wx_shedule.excute_task() 微信公众平台的定时任务调度
 
     init_log()
     application = tornado.web.Application(route.handlers, **settings)

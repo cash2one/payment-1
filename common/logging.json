@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "disable_existing_loggers": false,
+    "disable_existing_loggings": false,
     "formatters": {
         "simple": {
             "format": "%(asctime)s - %(name)s - %(levelname)s - %(module)s:%(lineno)d - %(message)s",
@@ -37,7 +37,7 @@
         }
     },
 
-    "loggers": {
+    "loggings": {
         "my_module": {
             "level": "ERROR",
             "handlers": ["console"],
