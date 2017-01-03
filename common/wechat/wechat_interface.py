@@ -8,7 +8,7 @@ from hashlib import sha1, md5
 # from wechatpy.utils import check_signature
 # from wechatpy.exceptions import InvalidSignatureException
 
-from wechat_settings import APP_ID, APP_SECRET, BASE_URL, WECHAT_TOKEN
+from wechat_settings import WX_PUBLIC, WX_BASE_URL
 
 __author__ = 'raymondlei'
 
@@ -19,10 +19,10 @@ __author__ = 'raymondlei'
 class WechatInterface:
 
     def __init__(self):
-        self.__APPID = APP_ID
-        self.__APPSECRET = APP_SECRET
-        self.BASE_URL = BASE_URL
-        self.__TOKEN = WECHAT_TOKEN
+        self.__APPID = WX_PUBLIC['APP_ID']
+        self.__APPSECRET = WX_PUBLIC['APP_SECRET']
+        self.BASE_URL = WX_BASE_URL
+        self.__TOKEN = WX_PUBLIC['TOKEN']
 
 
     def checkSignature(self, signature, timestamp, nonce):
@@ -34,6 +34,7 @@ class WechatInterface:
         :param nonce:
         :return:
         """
+
         list_str = [self.__TOKEN, timestamp, nonce]
 
         #1.将token、timestamp、nonce三个参数进行字典序排序
@@ -44,10 +45,17 @@ class WechatInterface:
         logging.debug('sha1=' + tmp_str + '&signatureure=' + signature)
 
         # 3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
-        result = True if tmp_str != None and tmp_str == signature else False
-        return result
+        return True if tmp_str != None and tmp_str == signature else False
+
 
     def wechat_sha1(self, list_str):
+
+        """
+        SHA1加密
+        :param list_str:
+        :return:
+        """
+
         sha1_str = list_str[0] + list_str[1] + list_str[2]
         return sha1(sha1_str.encode('utf-8')).hexdigest()
 
