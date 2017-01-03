@@ -9,7 +9,7 @@ from web.base import BaseRequestHandler
 from wechatpy.utils import check_signature
 from wechatpy.exceptions import InvalidSignatureException
 
-from common.wechat.wechat_settings import WECHAT_TOKEN
+from common.wechat.wechat_settings import WX_PUBLIC
 
 
 __author__ = 'raymondlei'
@@ -32,7 +32,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
             # 随机字符串
             echostr = self.get_argument('echostr', None)
 
-            result = check_signature(WECHAT_TOKEN, signature, timestamp, nonce)
+            result = check_signature(WX_PUBLIC['TOKEN'], signature, timestamp, nonce)
             print type(result), result
             if result:
                 self.write(echostr)
