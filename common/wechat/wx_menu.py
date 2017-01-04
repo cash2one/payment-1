@@ -63,6 +63,10 @@ class WXMenu:
 
         return self.BASE_URL+'token?grant_type=client_credential&appid=%s&secret=%s' % (self.__APPID, self.__APPSECRET)
 
+    def get_js_sdk_url(self, access_token):
+        return self.BASE_URL+'/ticket/getticket?access_token=%s&type=jsapi' % (access_token,)
+
+
     def get_cre_menu_url(self, access_token):
 
         """
@@ -212,7 +216,7 @@ class WXMenu:
             logging.error('【微信自定义菜单】自定义菜单删除接口获取不到access_token')
 
 
-wx_menu = WXMenu()
+wxmenu = WXMenu()
 
 class WXUtil:
 

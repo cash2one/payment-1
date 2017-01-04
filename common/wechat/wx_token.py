@@ -7,7 +7,8 @@ import json
 import logging
 
 from common.db.redis_db import redis_db
-from wx_menu import wx_menu
+import wx_menu
+
 __author__ = 'raymondlei'
 
 class WXTokenCache:
@@ -106,7 +107,7 @@ class WxShedule(object):
         :return:
         """
 
-        url = wx_menu.get_access_tokenurl()
+        url = wx_menu.wxmenu.get_access_tokenurl()
         r = requests.get(url)
 
         logging.info('【获取微信全局唯一票据access_token】Response[' + str(r.status_code) + ']')
@@ -151,7 +152,7 @@ class WxShedule(object):
 
         if access_token:
 
-            url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi' % access_token
+            url = wx_menu.wxmenu.get_js_sdk_url(access_token)
 
             r = requests.get(url)
 

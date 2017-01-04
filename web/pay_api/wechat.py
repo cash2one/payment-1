@@ -15,10 +15,7 @@ from common.wechat.wechat_settings import WX_PUBLIC
 __author__ = 'raymondlei'
 
 
-# 第三方库解析XML的时候出现一些问题
-#@route('/wxsignature')
-
-@TODO
+@route('/wxsignature')
 class WXCheckSignatureHandler(BaseRequestHandler):
 
     def do_get(self):

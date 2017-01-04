@@ -40,7 +40,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
             # 随机字符串
             echostr = self.get_argument('echostr', None)
 
-            result = wx_menu.wx_menu.check_signature(signature, timestamp, nonce)
+            result = wx_menu.wxmenu.check_signature(signature, timestamp, nonce)
 
             if result:
 
@@ -54,7 +54,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
 
             self.write_warning('微信sign校验异常' + str(e))
 
-
+@route('/wxtoken')
 class WXGetAccessTokenHandler(BaseRequestHandler):
 
     """
@@ -71,6 +71,7 @@ class WXGetAccessTokenHandler(BaseRequestHandler):
         except Exception as e:
             self.write_warning('微信获取全局唯一ACCESSTOKEN异常'+ str(e))
 
+@route('/wxiplist')
 class WXServerIPHandler(BaseRequestHandler):
 
     """
@@ -87,6 +88,7 @@ class WXServerIPHandler(BaseRequestHandler):
         except Exception as e:
             self.write_warning('微信获取服务器IP地址异常'+ str(e))
 
+@route('/wxmenu')
 class WXMenuHandler(BaseRequestHandler):
 
     """
@@ -101,7 +103,7 @@ class WXMenuHandler(BaseRequestHandler):
         """
         try:
             body_json = self.get_json_request_body()
-            res = wx_menu.wx_menu.create_menu(body_json)
+            res = wx_menu.wxmenu.create_menu(body_json)
             self.write(res)
         except Exception as e:
             self.write_warning("创建微信自定义菜单异常"+ str(e))

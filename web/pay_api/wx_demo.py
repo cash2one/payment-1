@@ -35,7 +35,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
             # 随机字符串
             echostr = self.get_argument('echostr', None)
 
-            result = wx_menu.wx_menu.check_signature(signature, timestamp, nonce)
+            result = wx_menu.wxmenu.check_signature(signature, timestamp, nonce)
 
             if result:
 
