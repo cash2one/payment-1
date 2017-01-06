@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests
-
 from web.route import route
 from web.base import BaseRequestHandler
 from common.wechat import wx_menu, wx_token

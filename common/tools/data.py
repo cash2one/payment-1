@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys, os, hashlib, re, json, logging, logging.config, io, random, time, datetime
+from random import Random
 
 from bson.objectid import ObjectId
 
@@ -22,6 +23,19 @@ def number_code():
     number = '0123456789'
     return str(''.join(random.sample(number[0:10],6)))
 
+def random_str(randomlength=8):
+    """
+    生成指定长度的随机字符串，默认是8位
+    :param randomlength:
+    :return:
+    """
+    str = ''
+    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
+    length = len(chars) - 1
+    random = Random()
+    for i in range(randomlength):
+        str+=chars[random.randint(0, length)]
+    return str
 
 def cre_user_token(uid, uname):
     """

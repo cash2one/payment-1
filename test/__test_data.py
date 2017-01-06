@@ -5,10 +5,12 @@
 """
 
 
-import time
+from common.tools.data import random_str
 
 __author__ = 'swzs'
 
 #ldx
 TEST_PHONE_1 = u'13106577275'
 
+if __name__ == '__main__':
+    print len(random_str(32))

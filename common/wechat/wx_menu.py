@@ -64,6 +64,13 @@ class WXMenu:
         return self.BASE_URL+'token?grant_type=client_credential&appid=%s&secret=%s' % (self.__APPID, self.__APPSECRET)
 
     def get_js_sdk_url(self, access_token):
+
+        """
+        获取JS_SDK权限签名的jsapi_ticket链接
+        :param access_token:
+        :return:
+        """
+
         return self.BASE_URL+'/ticket/getticket?access_token=%s&type=jsapi' % (access_token,)
 
 

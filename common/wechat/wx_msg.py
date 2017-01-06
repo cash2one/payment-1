@@ -3,6 +3,8 @@
 
 import logging, time
 import xml.etree.ElementTree as ET
+from wechatpy import parse_message
+
 
 __author__ = 'raymondlei'
 
@@ -71,6 +73,18 @@ class WXMsg:
         return textTpl % (FromUserName, ToUserName, CreateTime, 'text', Content)
 
 
+    #**********************************************第三方引用包的一些实现***************************************************
+
+    def parse_msg_xml(self, xml_doc):
+        """
+        解析XML消息
+        :param xml_doc:
+        :return:
+        """
+        try:
+            return parse_message(xml_doc)
+        except Exception as e:
+            logging.debug("第三方库解析XML消息异常"+str(e))
 
 wx_msg = WXMsg()
 
