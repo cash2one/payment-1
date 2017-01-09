@@ -47,6 +47,16 @@ WX_BASE_URL = 'https://api.weixin.qq.com/cgi-bin/'
 
 
 
+#****************************************企业号支付*******************************************************
+
+WX_ENT = {
+    'TOKEN':'wxpayment',
+    'ENCODING_AESKEY':'',
+    'CORP_ID':'CorpId'
+}
+
+
+
 
 
 
