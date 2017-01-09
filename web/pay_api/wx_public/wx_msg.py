@@ -53,3 +53,14 @@ class WXCheckSignatureHandler(BaseRequestHandler):
         except InvalidSignatureException as e:
 
             self.write_warning('微信sign校验,---Exception' + str(e))
+
+
+
+
+
+
+
+
+
+
+
