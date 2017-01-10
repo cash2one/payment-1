@@ -54,3 +54,6 @@ class EnterpriseSignatureHandler(BaseRequestHandler):
 
             raise '微信企业号验证请求有效性异常' +str(e)
 
+
+
+
