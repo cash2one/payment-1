@@ -99,6 +99,7 @@ class WXMenuHandler(BaseRequestHandler):
         创建自定义菜单
         :return:
         """
+
         try:
             body_json = self.get_json_request_body()
             res = wx_menu.wxmenu.create_menu(body_json)

@@ -24,24 +24,7 @@ class SimpleTestHandler(AsyncTestCase):
     BASE_HOST_URL = 'http://%s:%s/v1' % (LOCALITY_HOST, SERVER_PORT)
     HEADERS = {'content-type': 'application/json'}
 
-    @classmethod
-    def simulation_user_login(cls, uid, uip, uname):
-        """
-        模拟用户登录
-        :param cls:
-        :param uid:
-        :return:
-        """
-        return user_online_sign(uid, uip, uname)
 
-    @classmethod
-    def simulation_user_loginout(cls, uid):
-        """
-        模拟用户登出
-        :param cls:
-        :return:
-        """
-        return user_online_out(uid)
 
     def get_url(self, url):
         """
