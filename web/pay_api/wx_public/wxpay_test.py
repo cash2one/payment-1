@@ -379,7 +379,7 @@ class WXJSAPIHandler(BaseRequestHandler):
     """
     wxjs = wechatpy.pay.api.WeChatJSAPI
 
-    def do_post(self):
+    def do_get(self):
         """
         获取 JSAPI 签名
 
@@ -389,12 +389,11 @@ class WXJSAPIHandler(BaseRequestHandler):
         :return: 签名
         """
         try:
-            body_json = self.get_json_request_body()
 
-            prepay_id = body_json.get('prepay_id', None)
-            timestamp = body_json.get('timestamp', now_timestamp)
-            nonce_str = body_json.get('nonce_str', None)
-            
+            prepay_id = self.get_argument('prepay_id', None)
+            timestamp = self.get_argument('timestamp', now_timestamp)
+            nonce_str = self.get_argument('nonce_str', None)
+
             if prepay_id:
                 res = self.wxjs.get_jsapi_signature(prepay_id, timestamp, nonce_str)
                 if res:
@@ -406,7 +405,7 @@ class WXJSAPIHandler(BaseRequestHandler):
 
 
 
-    def do_get(self):
+    def do_post(self):
         """
         获取 JSAPI 参数
 
@@ -418,9 +417,11 @@ class WXJSAPIHandler(BaseRequestHandler):
 
         try:
 
-            prepay_id = self.get_argument('prepay_id', None)
-            timestamp = self.get_argument('timestamp', now_timestamp)
-            nonce_str = self.get_argument('nonce_str', None)
+            body_json = self.get_json_request_body()
+
+            prepay_id = body_json.get('prepay_id', None)
+            timestamp = body_json.get('timestamp', now_timestamp)
+            nonce_str = body_json.get('nonce_str', None)
 
             if prepay_id:
 
