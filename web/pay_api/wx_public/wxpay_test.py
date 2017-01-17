@@ -73,7 +73,7 @@ class WXOrderHandler(BaseRequestHandler):
 
             body_json = self.get_json_request_body()
 
-            trade_type = body_json.get('trade_type', 'WAP')                       # 这里方便测试选择WAP方式，可通过URL直接访问
+            trade_type = body_json.get('trade_type', 'JSAPI')                       # 这里方便测试选择WAP方式，可通过URL直接访问
             body = body_json.get('body', None)
             total_fee = body_json.get('total_fee', None)
             notify_url = body_json.get('notify_url', None)
@@ -169,17 +169,6 @@ class WXOrderCloseHandler(BaseRequestHandler):
 
         except Exception as e:
             logging.debug(e+str('微信支付，关闭订单异常!'))
-
-
-class WXAPPPayParamHandler(BaseRequestHandler):
-    """
-    获取APP支付参数
-    """
-
-    def do_get(self):
-        """
-
-        """
 
 
 
