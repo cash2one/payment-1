@@ -85,4 +85,3 @@ class WXDemoHandler(BaseRequestHandler):
 
     def get(self):
         self.write('hello kitty!')
-        self.write('hello kitty!')
