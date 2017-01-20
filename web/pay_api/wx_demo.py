@@ -49,7 +49,7 @@ class WXCheckSignatureHandler(BaseRequestHandler):
 
             self.write_warning('微信sign校验,---Exception' + str(e))
 
-@route('wxauthorize')
+@route('/wxauthorize')
 class WXAuthorizeHandler(BaseRequestHandler):
 
     """
@@ -68,3 +68,21 @@ class WXAuthorizeHandler(BaseRequestHandler):
             self.write_warning('微信取关事件推送，---推送失败' + str(e))
 
 
+@route('/index')
+class WXIndexHandler(BaseRequestHandler):
+    """
+    测试
+    """
+
+    def do_get(self):
+        self.write('hello world!')
+
+@route('/demo')
+class WXDemoHandler(BaseRequestHandler):
+    """
+    测试
+    """
+
+    def get(self):
+        self.write('hello kitty!')
+        self.write('hello kitty!')
